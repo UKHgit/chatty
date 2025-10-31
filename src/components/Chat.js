@@ -22,7 +22,6 @@ const Chat = ({ currentUser, otherUserUid }) => {
   const [showSettingsMenu, setShowSettingsMenu] = useState(false);
   const [onlineUsers, setOnlineUsers] = useState({});
   const [typingUsers, setTypingUsers] = useState({});
-  const [allUsersData, setAllUsersData] = useState({}); // To store all users' nicknames
   const [otherUserData, setOtherUserData] = useState(null); // To store the other user's data
   const [replyToMessage, setReplyToMessage] = useState(null); // New state for replying
   const [seenMessageIds, setSeenMessageIds] = useState(new Set()); // Track seen messages
@@ -83,18 +82,6 @@ const Chat = ({ currentUser, otherUserUid }) => {
 
     return () => observer.disconnect();
   }, [messages, currentUser.uid, seenMessageIds]); // Re-run when messages or currentUser changes
-
-  // --- Fetch all users' data (especially nicknames) --- //
-  useEffect(() => {
-    const usersDataRef = ref(rtdb, 'users');
-    const unsubscribeUsersData = onValue(usersDataRef, (snapshot) => {
-      const users = snapshot.val();
-      if (users) {
-        setAllUsersData(users);
-      }
-    });
-    return () => unsubscribeUsersData();
-  }, []);
 
   // --- Presence (Online/Last Seen) --- //
   useEffect(() => {
@@ -179,7 +166,7 @@ const Chat = ({ currentUser, otherUserUid }) => {
       setOtherUserData(snapshot.val());
     });
     return () => unsubscribeOtherUser();
-  }, [otherUserUid]);
+  }, [otherUserUid, conversationId]);
 
   // --- Message Fetching and Nickname Management --- //
   useEffect(() => {
