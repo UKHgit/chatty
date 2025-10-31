@@ -169,6 +169,7 @@ const Chat = ({ currentUser, otherUserUid }) => {
   }, [otherUserUid, conversationId]);
 
   // --- Message Fetching and Nickname Management --- //
+  // Trivial change to force Netlify rebuild
   useEffect(() => {
     const messagesRef = query(ref(rtdb, `private_chats/${conversationId}/messages`), orderByChild('createdAt'), limitToLast(50));
     const unsubscribeMessages = onValue(messagesRef, (snapshot) => {
