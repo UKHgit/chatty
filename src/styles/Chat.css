@@ -1,0 +1,632 @@
+/* General Chat Styles */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--chat-bg-light); /* WhatsApp chat background color */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* WhatsApp-like font */
+  color: var(--text-color-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .chat-container {
+  background-color: var(--chat-bg-dark);
+  color: var(--text-color-dark);
+}
+
+/* Header Styles */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  min-height: 50px; /* Ensure header is always visible */
+  background-color: var(--header-bg-light); /* WhatsApp header green */
+  color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .chat-header {
+  background-color: var(--header-bg-dark);
+}
+
+.chat-header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chat-current-user-display {
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.chat-header-status {
+  font-size: 0.9em; /* Increased font size */
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.chat-user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-edit-nickname-button,
+.chat-sign-out-button {
+  background-color: var(--edit-button-light); /* Darker green for buttons */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px; /* More rounded buttons */
+  cursor: pointer;
+  font-size: 0.8em;
+  transition: background-color 0.2s ease;
+}
+
+.dark-mode .chat-edit-nickname-button {
+  background-color: var(--edit-button-dark);
+}
+
+.chat-sign-out-button {
+  background-color: var(--signout-button-light); /* Red for sign out */
+}
+
+.dark-mode .chat-sign-out-button {
+  background-color: var(--signout-button-dark);
+}
+
+.chat-clear-button {
+  color: white;
+  background-color: #dc3545; /* Red color for clear chat */
+}
+
+.chat-clear-button:hover {
+  background-color: #c82333;
+}
+
+.chat-edit-nickname-button:hover,
+.chat-sign-out-button:hover {
+  opacity: 0.9;
+}
+
+/* Nickname Input Styles */
+.chat-nickname-input-container {
+  display: flex;
+  padding: 10px 15px;
+  background-color: var(--input-bg-light); /* Light grey background */
+  border-bottom: 1px solid var(--input-border-light);
+  gap: 10px;
+  align-items: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .chat-nickname-input-container {
+  background-color: var(--input-bg-dark);
+  border-color: var(--input-border-dark);
+}
+
+.chat-nickname-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--input-border-light);
+  border-radius: 20px;
+  font-size: 0.9em;
+  background-color: white;
+  color: var(--text-color-light);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .chat-nickname-input {
+  background-color: var(--input-bg-dark);
+  border-color: var(--input-border-dark);
+  color: var(--text-color-dark);
+}
+
+.chat-update-nickname-button {
+  background-color: var(--save-button-light); /* Green for save */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
+
+.dark-mode .chat-update-nickname-button {
+  background-color: var(--save-button-dark);
+}
+
+.chat-update-nickname-button:hover {
+  opacity: 0.9;
+}
+
+/* Messages Container */
+.chat-messages-container {
+  flex: 1;
+  padding: 10px 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background-image: url('https://i.pinimg.com/736x/05/5c/74/055c746aca565bdb3f93b551961487c5.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .chat-messages-container {
+  /* The background image will now be visible in dark mode */
+}
+
+/* Message Bubbles */
+.chat-message {
+  max-width: 75%; /* Slightly wider bubbles */
+  padding: 8px 12px;
+  border-radius: 8px; /* Default rounded corners */
+  margin-bottom: 8px;
+  position: relative;
+  word-wrap: break-word;
+  word-break: break-word; /* Ensure long words break */
+  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.chat-my-message {
+  align-self: flex-end;
+  background-color: var(--message-my-bg-light); /* Light green for sent messages */
+  border-top-right-radius: 0; /* Pointy corner for sent messages */
+  margin-left: auto;
+}
+
+.dark-mode .chat-my-message {
+  background-color: var(--message-my-bg-dark);
+}
+
+.chat-other-message {
+  align-self: flex-start;
+  background-color: var(--message-other-bg-light); /* White for received messages */
+  border-top-left-radius: 0; /* Pointy corner for received messages */
+  margin-right: auto;
+}
+
+.dark-mode .chat-other-message {
+  background-color: var(--message-other-bg-dark);
+}
+
+.chat-message-sender {
+  font-weight: bold;
+  margin-bottom: 2px;
+  font-size: 0.8em;
+  color: var(--message-sender-light);
+  transition: color 0.3s ease;
+}
+
+.dark-mode .chat-message-sender {
+  color: var(--message-sender-dark);
+}
+
+  .chat-message-time {
+    font-size: 0.65em;
+    color: var(--message-time-light);
+    margin-top: 5px;
+    display: block;
+    text-align: right;
+    transition: color 0.3s ease;
+  }
+
+  .dark-mode .chat-message-time {
+    color: var(--message-time-dark);
+  }
+
+  /* Read Receipt Indicator */
+  .read-receipt-indicator {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 5px;
+    gap: 2px;
+  }
+
+  .receipt-bulb {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #888; /* Darker grey for unseen/undelivered for better contrast */
+    display: inline-block;
+  }
+
+  .receipt-bulb.red {
+    background-color: #FF4136; /* Brighter, more vibrant red */
+  }
+
+  .receipt-bulb.yellow {
+    background-color: #FFDC00; /* Brighter, more distinct yellow */
+  }
+
+  .receipt-bulb.green {
+    background-color: #2ECC40; /* Brighter, more vivid green */
+  }
+
+  /* Reply Context within a message bubble */.chat-message .chat-reply-context {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-left: 3px solid #34b7f1; /* WhatsApp reply bar color */
+  padding: 5px 8px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  font-size: 0.8em;
+}
+
+.dark-mode .chat-message .chat-reply-context {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chat-reply-sender {
+  font-weight: bold;
+  color: #34b7f1; /* WhatsApp reply sender color */
+}
+
+.chat-reply-text {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Reply Input Preview */
+.chat-reply-input-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 15px;
+  min-height: 50px; /* Ensure reply preview is always visible */
+  background-color: var(--input-bg-light);
+  border-top: 1px solid var(--input-border-light);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .chat-reply-input-preview {
+  background-color: var(--input-bg-dark);
+  border-color: var(--input-border-dark);
+}
+
+.chat-reply-input-content {
+  flex: 1;
+  border-left: 3px solid #34b7f1;
+  padding-left: 10px;
+}
+
+.chat-reply-input-content span {
+  font-weight: bold;
+  color: #34b7f1;
+  font-size: 0.9em;
+}
+
+.chat-reply-input-content p {
+  margin: 0;
+  font-size: 0.8em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-reply-cancel-button {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: var(--text-color-light);
+  transition: color 0.3s ease;
+}
+
+.dark-mode .chat-reply-cancel-button {
+  color: var(--text-color-dark);
+}
+
+.chat-reply-cancel-button:hover {
+  color: #dc3545;
+}
+
+/* Message Input Area */
+.chat-message-input-container {
+  display: flex;
+  padding: 8px 15px;
+  min-height: 60px; /* Ensure message input is always visible */
+  background-color: var(--input-bg-light); /* Light grey background */
+  border-top: 1px solid var(--input-border-light);
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .chat-message-input-container {
+  background-color: var(--input-bg-dark);
+  border-color: var(--input-border-dark);
+}
+
+.chat-message-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid var(--input-border-light);
+  border-radius: 20px; /* Rounded input field */
+  font-size: 1em;
+  outline: none;
+  background-color: white;
+  color: var(--text-color-light);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .chat-message-input {
+  background-color: var(--input-bg-dark);
+  border-color: var(--input-border-dark);
+  color: var(--text-color-dark);
+}
+
+.chat-send-button {
+  background-color: var(--send-button-light); /* WhatsApp send button green */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%; /* Circular send button */
+  cursor: pointer;
+  font-size: 1.2em;
+  width: 45px; /* Fixed width for circular button */
+  height: 45px; /* Fixed height for circular button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.dark-mode .chat-send-button {
+  background-color: var(--send-button-dark);
+}
+
+.chat-send-button:hover {
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .chat-header {
+    padding: 8px 5px; /* Reduced horizontal padding */
+  }
+
+  .chat-current-user-display {
+    font-size: 1.2em;
+  }
+
+  .chat-header-status {
+    font-size: 0.85em;
+  }
+
+  .chat-user-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 2px; /* Reduced gap */
+  }
+
+  .chat-edit-nickname-button,
+  .chat-sign-out-button {
+    padding: 7px 10px;
+    font-size: 0.7em;
+  }
+
+  .chat-nickname-input-container {
+    flex-direction: column;
+    padding: 8px 5px; /* Reduced horizontal padding */
+  }
+
+  .chat-nickname-input {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    padding: 10px;
+  }
+
+  .chat-update-nickname-button {
+    width: 100%;
+    font-size: 0.9em;
+    padding: 10px;
+  }
+
+  .chat-messages-container {
+    padding: 8px 5px; /* Reduced horizontal padding */
+  }
+
+  .chat-message {
+    max-width: 98%; /* Increased max-width for messages */
+    padding: 8px 12px;
+    font-size: 0.95em;
+  }
+
+  .chat-message-sender {
+    font-size: 0.75em;
+  }
+
+  .chat-message-time {
+    font-size: 0.65em;
+  }
+
+  .chat-message-input-container {
+    padding: 8px 5px; /* Reduced horizontal padding */
+    gap: 5px; /* Reduced gap */
+  }
+
+  .chat-message-input {
+    padding: 10px 12px;
+    font-size: 0.95em;
+  }
+
+  .chat-send-button {
+    width: 48px;
+    height: 48px;
+    font-size: 1.1em;
+  }
+}
+
+.chat-media {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+  .chat-file-input {
+
+    display: none; /* Hide the default file input */
+
+  }
+
+
+
+  .chat-media-button {
+
+    background-color: var(--send-button-light); /* Use a similar color to the send button */
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 15px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 1.2em;
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: background-color 0.2s ease;
+
+  }
+
+
+
+  .dark-mode .chat-media-button {
+
+    background-color: var(--send-button-dark);
+
+  }
+
+
+
+  .chat-media-button:hover {
+
+    opacity: 0.9;
+
+  }
+
+/* Settings Menu Styles */
+.chat-settings-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.chat-settings-menu {
+  position: absolute;
+  top: 60px; /* Adjust based on header height */
+  right: 10px;
+  background-color: var(--input-bg-light);
+  border: 1px solid var(--input-border-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden; /* Ensures rounded corners apply to children */
+}
+
+.dark-mode .chat-settings-menu {
+  background-color: var(--input-bg-dark);
+  border-color: var(--input-border-dark);
+}
+
+.chat-menu-item {
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-color-light);
+  font-size: 1em;
+  transition: background-color 0.2s ease;
+}
+
+.dark-mode .chat-menu-item {
+  color: var(--text-color-dark);
+}
+
+.chat-menu-item:hover {
+  background-color: var(--input-border-light);
+}
+
+.dark-mode .chat-menu-item:hover {
+  background-color: var(--input-border-dark);
+}
+
+/* Background Input Styles */
+.chat-background-input-container {
+  display: flex;
+  padding: 10px 15px;
+  background-color: var(--input-bg-light);
+  border-bottom: 1px solid var(--input-border-light);
+  gap: 10px;
+  align-items: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .chat-background-input-container {
+  background-color: var(--input-bg-dark);
+  border-color: var(--input-border-dark);
+}
+
+.chat-background-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--input-border-light);
+  border-radius: 20px;
+  font-size: 0.9em;
+  background-color: white;
+  color: var(--text-color-light);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .chat-background-input {
+  background-color: var(--input-bg-dark);
+  border-color: var(--input-border-dark);
+  color: var(--text-color-dark);
+}
+
+.chat-update-background-button {
+  background-color: var(--save-button-light);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
+
+.dark-mode .chat-update-background-button {
+  background-color: var(--save-button-dark);
+}
+
+.chat-update-background-button:hover {
+  opacity: 0.9;
+}

@@ -1,10 +1,63 @@
-body {
+:root {
+  --background-color-light: #f0f2f5;
+  --background-color-dark: #1a2b3c;
+  --text-color-light: #1f2d33;
+  --text-color-dark: #e0e0e0;
+  --header-bg-light: #075e54;
+  --header-bg-dark: #1c1c1c;
+  --button-primary-light: #007bff;
+  --button-primary-dark: #4299e1;
+  --button-google-light: #db4437;
+  --button-google-dark: #e53e3e;
+  --button-apple-light: #000000;
+  --button-apple-dark: #a0aec0;
+  --chat-bg-light: #ece5dd;
+  --chat-bg-dark: #1a2b3c;
+  --message-my-bg-light: #003399;
+  --message-my-bg-dark: #002266;
+  --message-other-bg-light: #ADD8E6;
+  --message-other-bg-dark: #2C3E50;
+  --message-sender-light: #333;
+  --message-sender-dark: #a0aec0;
+  --message-time-light: #888;
+  --message-time-dark: #cbd5e0;
+  --input-bg-light: #f0f0f0;
+  --input-bg-dark: #1c1c1c;
+  --input-border-light: #ddd;
+  --input-border-dark: #333333;
+  --send-button-light: #25D366;
+  --send-button-dark: #075E54;
+  --edit-button-light: #128c7e;
+  --edit-button-dark: #004d40;
+  --save-button-light: #28a745;
+  --save-button-dark: #004d40;
+  --signout-button-light: #dc3545;
+  --signout-button-dark: #cc0000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+}
+
+body.dark-mode {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
 }
 
 code {

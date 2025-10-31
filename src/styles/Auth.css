@@ -1,0 +1,163 @@
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee); /* Romantic gradient */
+  background-size: 400% 400%;
+  animation: gradient-animation 15s ease infinite;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--text-color-light);
+  transition: color 0.3s ease;
+  position: relative; /* Needed for heart animations */
+  overflow: hidden; /* Hide overflowing hearts */
+}
+
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.dark-mode .auth-container {
+  background: linear-gradient(45deg, #3a0000, #5c0000, #00003a, #00005c); /* Darker romantic gradient for dark mode */
+  background-size: 400% 400%;
+  animation: gradient-animation 15s ease infinite;
+  color: var(--text-color-dark);
+}
+
+.heart {
+  position: absolute;
+  top: -20px; /* Start above the viewport */
+  font-size: 2em; /* Size of the heart */
+  color: #ff6b6b; /* Heart color */
+  animation: heart-animation linear infinite;
+  z-index: 0; /* Ensure hearts are behind content */
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+@keyframes heart-animation {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(10%) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.auth-heading {
+  color: var(--text-color-light);
+  margin-bottom: 20px;
+  font-size: 2em;
+  transition: color 0.3s ease;
+  z-index: 1; /* Ensure heading is above hearts */
+}
+
+.dark-mode .auth-heading {
+  color: var(--text-color-dark);
+}
+
+.auth-form-group {
+  margin-bottom: 15px;
+  width: 300px;
+  z-index: 1; /* Ensure form is above hearts */
+}
+
+.auth-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--input-border-light);
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: white;
+  color: var(--text-color-light);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  z-index: 1; /* Ensure input is above hearts */
+}
+
+.dark-mode .auth-input {
+  background-color: var(--input-bg-dark);
+  border-color: var(--input-border-dark);
+  color: var(--text-color-dark);
+}
+
+.auth-button-group {
+  display: flex;
+  gap: 10px;
+  width: 300px;
+  margin-bottom: 10px;
+  z-index: 1; /* Ensure buttons are above hearts */
+}
+
+.auth-button {
+  flex: 1;
+  padding: 12px 15px; /* Increased padding for better touch target */
+  background-color: var(--button-primary-light);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.dark-mode .auth-button {
+  background-color: var(--button-primary-dark);
+}
+
+.auth-button:hover {
+  opacity: 0.9;
+}
+
+.auth-button.google {
+  background-color: var(--button-google-light);
+}
+
+.dark-mode .auth-button.google {
+  background-color: var(--button-google-dark);
+}
+
+.auth-button.apple {
+  background-color: var(--button-apple-light);
+}
+
+.dark-mode .auth-button.apple {
+  background-color: var(--button-apple-dark);
+}
+
+.auth-error {
+  color: red;
+  margin-top: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .auth-form-group,
+  .auth-button-group {
+    width: 90%; /* Adjust width for smaller screens */
+  }
+
+  .auth-heading {
+    font-size: 1.8em; /* Slightly larger for mobile */
+  }
+
+  .auth-input {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .auth-button {
+    font-size: 16px;
+    padding: 12px 15px;
+  }
+}
