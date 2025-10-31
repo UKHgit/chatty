@@ -208,7 +208,7 @@ const Chat = ({ currentUser, otherUserUid }) => {
       unsubscribeMessages();
       unsubscribeProfile();
     };
-  }, [currentUser, conversationId]);
+  }, [currentUser, conversationId, otherUserUid]);
 
   useEffect(() => {
     scrollToBottom();
@@ -314,10 +314,6 @@ const Chat = ({ currentUser, otherUserUid }) => {
 
   const handleCancelReply = () => {
     setReplyToMessage(null);
-  };
-
-  const getDisplayName = (uid) => {
-    return allUsersData[uid]?.nickname || uid;
   };
 
   const getHeaderStatus = () => {
