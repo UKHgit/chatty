@@ -166,10 +166,11 @@ const Chat = ({ currentUser, otherUserUid }) => {
       setOtherUserData(snapshot.val());
     });
     return () => unsubscribeOtherUser();
-  }, [otherUserUid, conversationId]);
+  }, [otherUserUid]);
 
   // --- Message Fetching and Nickname Management --- //
   // Trivial change to force Netlify rebuild
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const messagesRef = query(ref(rtdb, `private_chats/${conversationId}/messages`), orderByChild('createdAt'), limitToLast(50));
     const unsubscribeMessages = onValue(messagesRef, (snapshot) => {
